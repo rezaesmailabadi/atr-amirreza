@@ -1,733 +1,2063 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>عطر امیر رضا | تجربه‌ای متفاوت از رایحه</title>
-
-
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
+<title>امیر رضا | خانه عطر</title>
 
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --cream:#f4efe7;
+    --paper:#ebe4d8;
+    --black:#101010;
+    --black2:#181716;
+    --gold:#c6a15b;
+    --gold2:#e3c783;
+    --brown:#634936;
+    --wine:#421d25;
+    --muted:#82786d;
+    --line:rgba(16,16,16,.13);
+    --white:#fffdf9;
+}
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Vazirmatn',sans-serif;
 }
-
-
-body{
-
-    background:
-    radial-gradient(circle at top,#4a3b1a,#050505 45%);
-
-    color:white;
-    overflow-x:hidden;
-
-}
-
-
 
 html{
     scroll-behavior:smooth;
 }
 
+body{
+    background:var(--cream);
+    color:var(--black);
+    font-family:'Vazirmatn',sans-serif;
+    overflow-x:hidden;
+}
+
+body.menu-open{
+    overflow:hidden;
+}
+
+button,
+a{
+    font-family:inherit;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+::selection{
+    background:var(--black);
+    color:var(--gold2);
+}
 
 
+/* =========================================================
+   GRAIN
+========================================================= */
 
-/* HEADER */
-
-header{
-
+body::before{
+    content:"";
     position:fixed;
-    width:100%;
-    top:0;
-    z-index:1000;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+    opacity:.035;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
+}
 
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+.cursor-glow{
+    position:fixed;
+    width:380px;
+    height:380px;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:0;
+    background:radial-gradient(
+        circle,
+        rgba(198,161,91,.11),
+        transparent 68%
+    );
+    transform:translate(-50%,-50%);
+    transition:opacity .3s;
+}
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+.container{
+    width:min(1320px,90%);
+    margin:auto;
+}
+
+.section{
+    position:relative;
+    padding:130px 0;
+}
+
+.eyebrow{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    color:var(--gold);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+
+.eyebrow::before{
+    content:"";
+    width:45px;
+    height:1px;
+    background:var(--gold);
+}
+
+.serif{
+    font-family:'Playfair Display',serif;
+}
+
+.gold{
+    color:var(--gold);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:5000;
+    padding:22px 0;
+    transition:.5s;
+}
+
+.header.scrolled{
+    padding:13px 0;
+    background:rgba(244,239,231,.88);
+    backdrop-filter:blur(20px);
+    border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+    width:min(1450px,92%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+}
+
+.logo{
+    justify-self:start;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo-mark{
+    width:38px;
+    height:38px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:var(--gold);
+    position:relative;
+}
+
+.logo-mark::after{
+    content:"";
+    width:7px;
+    height:7px;
+    background:var(--gold);
+    border-radius:50%;
+}
+
+.logo-text{
+    line-height:1;
+}
+
+.logo-text small{
+    display:block;
+    margin-top:6px;
+    font-size:8px;
+    letter-spacing:3px;
+    color:var(--muted);
+    font-weight:500;
+    direction:ltr;
+}
+
+.nav{
+    display:flex;
+    align-items:center;
+    gap:38px;
+}
+
+.nav a{
+    font-size:13px;
+    color:#413d38;
+    position:relative;
+}
+
+.nav a::after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:-8px;
+    width:0;
+    height:1px;
+    background:var(--gold);
+    transition:.3s;
+}
+
+.nav a:hover::after{
+    width:100%;
+}
+
+.header-actions{
+    justify-self:end;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.header-icon{
+    width:43px;
+    height:43px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    background:transparent;
+    display:grid;
+    place-items:center;
+    transition:.3s;
+}
+
+.header-icon:hover{
+    background:var(--black);
+    color:var(--gold2);
+    border-color:var(--black);
+}
+
+.menu-btn{
+    display:none;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 78% 42%,
+            rgba(198,161,91,.15),
+            transparent 28%
+        ),
+        var(--cream);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:700px;
+    height:700px;
+    border:1px solid rgba(198,161,91,.15);
+    border-radius:50%;
+    left:-300px;
+    top:-150px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(16,16,16,.06);
+    border-radius:50%;
+    left:-200px;
+    top:-50px;
+}
+
+.hero-grid{
+    width:min(1450px,92%);
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    align-items:center;
+    gap:50px;
+
+    position:relative;
+    z-index:2;
+}
+
+.hero-copy{
+    padding-top:50px;
+}
+
+.hero-mini{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    padding:8px 13px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    font-size:11px;
+    color:var(--muted);
+    margin-bottom:30px;
+}
+
+.hero-mini span{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--gold);
+    box-shadow:0 0 0 5px rgba(198,161,91,.12);
+}
+
+.hero h1{
+    font-size:clamp(58px,7vw,112px);
+    line-height:1.02;
+    font-weight:500;
+    letter-spacing:-4px;
+}
+
+.hero h1 strong{
+    display:block;
+    font-weight:900;
+}
+
+.hero h1 em{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:400;
+    color:var(--gold);
+}
+
+.hero-description{
+    width:min(570px,100%);
+    margin-top:30px;
+    color:#716960;
+    font-size:15px;
+    line-height:2.3;
+}
+
+.hero-buttons{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    margin-top:38px;
+}
+
+.btn{
+    min-height:55px;
+    padding:0 27px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    border-radius:100px;
+    font-size:13px;
+    font-weight:700;
+    transition:.35s;
+}
+
+.btn-dark{
+    background:var(--black);
+    color:#fff;
+}
+
+.btn-dark:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 35px rgba(0,0,0,.16);
+}
+
+.btn-outline{
+    border:1px solid var(--line);
+}
+
+.btn-outline:hover{
+    background:var(--white);
+    transform:translateY(-4px);
+}
+
+.hero-meta{
+    margin-top:55px;
+    display:flex;
+    gap:35px;
+}
+
+.hero-meta-item{
+    padding-left:35px;
+    border-left:1px solid var(--line);
+}
+
+.hero-meta-item:last-child{
+    border-left:0;
+}
+
+.hero-meta strong{
+    font-size:20px;
+}
+
+.hero-meta span{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    margin-top:5px;
+}
+
+
+/* =========================================================
+   CSS PERFUME SCENE
+========================================================= */
+
+.hero-product{
+    position:relative;
+    height:650px;
+    display:grid;
+    place-items:center;
+}
+
+.product-aura{
+    position:absolute;
+    width:510px;
+    height:510px;
+    border-radius:50%;
+    background:
+        radial-gradient(
+            circle,
+            rgba(198,161,91,.25),
+            rgba(198,161,91,.05) 42%,
+            transparent 68%
+        );
+    filter:blur(3px);
+}
+
+.product-ring{
+    position:absolute;
+    width:520px;
+    height:520px;
+    border:1px solid rgba(198,161,91,.3);
+    border-radius:50%;
+    animation:rotateRing 30s linear infinite;
+}
+
+.product-ring::before,
+.product-ring::after{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--gold);
+}
+
+.product-ring::before{
+    top:20px;
+    right:50%;
+}
+
+.product-ring::after{
+    bottom:80px;
+    left:25px;
+}
+
+@keyframes rotateRing{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+
+/* Bottle */
+
+.bottle{
+    width:220px;
+    height:330px;
+    position:relative;
+    z-index:5;
+    transform:translateY(20px);
+    animation:bottleFloat 5s ease-in-out infinite;
+}
+
+@keyframes bottleFloat{
+    0%,100%{
+        transform:translateY(15px) rotate(0deg);
+    }
+    50%{
+        transform:translateY(-15px) rotate(1deg);
+    }
+}
+
+.bottle-cap{
+    position:absolute;
+    width:80px;
+    height:85px;
+    left:70px;
+    top:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            #191715,
+            #5d4930,
+            #171514
+        );
+
+    border-radius:8px 8px 3px 3px;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.1),
+        15px 15px 30px rgba(0,0,0,.25);
+}
+
+.bottle-neck{
+    position:absolute;
+    width:60px;
+    height:38px;
+    left:80px;
+    top:70px;
+
+    background:#bc9550;
+}
+
+.bottle-body{
+    position:absolute;
+    width:220px;
+    height:220px;
+    bottom:0;
+    left:0;
+
+    border-radius:25px 25px 32px 32px;
+
+    background:
+        linear-gradient(
+            105deg,
+            rgba(255,255,255,.25),
+            transparent 25%,
+            transparent 70%,
+            rgba(0,0,0,.35)
+        ),
+        linear-gradient(
+            135deg,
+            #30241a,
+            #9c753e 45%,
+            #3b291c
+        );
+
+    border:1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+        inset 12px 0 20px rgba(255,255,255,.12),
+        inset -20px 0 30px rgba(0,0,0,.25),
+        30px 35px 50px rgba(0,0,0,.28);
+}
+
+.bottle-body::before{
+    content:"";
+    position:absolute;
+    width:8px;
+    height:170px;
+    left:25px;
+    top:25px;
+    border-radius:50%;
+    background:rgba(255,255,255,.13);
+    filter:blur(2px);
+}
+
+.bottle-label{
+    position:absolute;
+    width:145px;
+    height:95px;
+    left:38px;
+    top:65px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eee2c6,
+            #fff8e8
+        );
+
+    color:#171412;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid rgba(0,0,0,.2);
+}
+
+.bottle-label small{
+    font-size:7px;
+    letter-spacing:3px;
+    direction:ltr;
+}
+
+.bottle-label strong{
+    margin-top:7px;
+    font-family:'Playfair Display',serif;
+    font-size:20px;
+    letter-spacing:1px;
+}
+
+.bottle-label span{
+    margin-top:4px;
+    font-size:7px;
+    color:#7c6a50;
+}
+
+.hero-floating-text{
+    position:absolute;
+    bottom:80px;
+    right:0;
+    font-family:'Playfair Display',serif;
+    font-size:13px;
+    letter-spacing:5px;
+    writing-mode:vertical-rl;
+    color:var(--muted);
+}
+
+
+/* =========================================================
+   MARQUEE
+========================================================= */
+
+.marquee{
+    overflow:hidden;
+    background:var(--black);
+    color:var(--gold2);
+    border-top:1px solid #27231d;
+    border-bottom:1px solid #27231d;
+}
+
+.marquee-track{
+    width:max-content;
+    display:flex;
+    gap:60px;
+    padding:18px 0;
+    animation:marquee 25s linear infinite;
+}
+
+.marquee-item{
+    display:flex;
+    align-items:center;
+    gap:60px;
+    font-family:'Playfair Display',serif;
+    font-size:17px;
+}
+
+.marquee-item::after{
+    content:"✦";
+    font-family:serif;
+    font-size:10px;
+}
+
+@keyframes marquee{
+    to{
+        transform:translateX(50%);
+    }
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    padding:150px 0 110px;
+}
+
+.intro-grid{
+    display:grid;
+    grid-template-columns:.7fr 1.3fr;
+    gap:100px;
+    align-items:start;
+}
+
+.intro-number{
+    font-family:'Playfair Display',serif;
+    font-size:130px;
+    line-height:.7;
+    color:rgba(198,161,91,.22);
+}
+
+.intro-content h2{
+    font-size:clamp(35px,5vw,65px);
+    line-height:1.25;
+    font-weight:500;
+}
+
+.intro-content h2 span{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    color:var(--gold);
+}
+
+.intro-content p{
+    max-width:700px;
+    margin-top:30px;
+    color:var(--muted);
+    line-height:2.3;
+    font-size:15px;
+}
+
+
+/* =========================================================
+   NOTES
+========================================================= */
+
+.notes-section{
+    background:var(--black);
+    color:white;
+    overflow:hidden;
+}
+
+.notes-section::before{
+    content:"AMIR REZA";
+    position:absolute;
+    font-family:'Playfair Display',serif;
+    font-size:18vw;
+    white-space:nowrap;
+    color:rgba(255,255,255,.018);
+    left:-5%;
+    top:30%;
+}
+
+.notes-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:30px;
+    margin-bottom:70px;
+}
+
+.notes-head h2{
+    font-size:55px;
+    font-weight:500;
+}
+
+.notes-head h2 em{
+    color:var(--gold);
+    font-family:'Playfair Display',serif;
+}
+
+.notes-head p{
+    max-width:350px;
+    color:#8d8982;
+    line-height:2;
+    font-size:13px;
+}
+
+.notes-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid rgba(255,255,255,.12);
+    border-right:1px solid rgba(255,255,255,.12);
+}
+
+.note-card{
+    min-height:270px;
+    padding:38px 30px;
+    border-left:1px solid rgba(255,255,255,.12);
+    border-bottom:1px solid rgba(255,255,255,.12);
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.note-card:hover{
+    background:#181714;
+}
+
+.note-card::after{
+    content:"";
+    position:absolute;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:var(--gold);
+    filter:blur(70px);
+    opacity:0;
+    transition:.4s;
+    left:-20px;
+    bottom:-20px;
+}
+
+.note-card:hover::after{
+    opacity:.16;
+}
+
+.note-icon{
+    width:50px;
+    height:50px;
+    border:1px solid rgba(198,161,91,.45);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    color:var(--gold);
+    margin-bottom:35px;
+}
+
+.note-card h3{
+    font-size:20px;
+    font-weight:500;
+}
+
+.note-card p{
+    margin-top:12px;
+    color:#7e7a74;
+    font-size:12px;
+    line-height:2;
+}
+
+
+/* =========================================================
+   COLLECTION
+========================================================= */
+
+.collection{
+    background:var(--paper);
+}
+
+.collection-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    margin-bottom:65px;
+}
+
+.collection-head h2{
+    font-size:55px;
+    font-weight:500;
+}
+
+.collection-head h2 em{
+    font-family:'Playfair Display',serif;
+    color:var(--gold);
+}
+
+.collection-head a{
+    font-size:12px;
+    border-bottom:1px solid var(--black);
+    padding-bottom:8px;
+}
+
+.collection-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+
+/* PRODUCT CARD */
+
+.perfume-card{
+    position:relative;
+    min-height:570px;
+    background:var(--cream);
+    overflow:hidden;
+    border:1px solid rgba(0,0,0,.07);
+    transition:.5s;
+}
+
+.perfume-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 30px 70px rgba(0,0,0,.1);
+}
+
+.perfume-top{
+    height:390px;
+    display:grid;
+    place-items:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.perfume-top::before{
+    content:"";
+    position:absolute;
+    width:270px;
+    height:270px;
+    border-radius:50%;
+    border:1px solid rgba(198,161,91,.25);
+}
+
+.perfume-top::after{
+    content:"";
+    position:absolute;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    background:rgba(198,161,91,.09);
+    filter:blur(35px);
+}
+
+
+/* Small bottles */
+
+.small-bottle{
+    position:relative;
+    z-index:2;
+    width:135px;
+    height:220px;
+    filter:drop-shadow(20px 30px 25px rgba(0,0,0,.22));
+    transition:.5s;
+}
+
+.perfume-card:hover .small-bottle{
+    transform:translateY(-10px) rotate(-2deg);
+}
+
+.sb-cap{
+    position:absolute;
+    top:0;
+    left:44px;
+    width:47px;
+    height:55px;
+    background:linear-gradient(90deg,#1a1917,#80633d,#171614);
+    border-radius:5px 5px 2px 2px;
+}
+
+.sb-neck{
+    position:absolute;
+    top:47px;
+    left:49px;
+    width:37px;
+    height:30px;
+    background:#b28a4b;
+}
+
+.sb-body{
+    position:absolute;
+    bottom:0;
+    width:135px;
+    height:145px;
+    border-radius:18px 18px 22px 22px;
+    background:linear-gradient(135deg,#3c261e,#a7783d,#2a211c);
+    border:1px solid rgba(255,255,255,.2);
+}
+
+.sb-label{
+    position:absolute;
+    top:45px;
+    left:20px;
+    width:95px;
+    height:58px;
+    background:#eee5d2;
+    display:grid;
+    place-items:center;
+    text-align:center;
+}
+
+.sb-label strong{
+    font-family:'Playfair Display',serif;
+    font-size:13px;
+}
+
+.sb-label small{
+    display:block;
+    font-size:6px;
+    letter-spacing:2px;
+    margin-top:2px;
+}
+
+.card-content{
+    padding:25px 28px;
+}
+
+.card-topline{
+    display:flex;
+    justify-content:space-between;
+    color:#92887d;
+    font-size:10px;
+}
+
+.card-content h3{
+    margin-top:13px;
+    font-size:22px;
+    font-weight:600;
+}
+
+.card-content p{
+    margin-top:8px;
+    color:#8a8075;
+    font-size:11px;
+}
+
+.card-bottom{
+    margin-top:20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
-    padding:25px 8%;
-
-    background:rgba(0,0,0,.35);
-    backdrop-filter:blur(15px);
-
 }
 
-
-.logo{
-
-    font-size:30px;
-    font-weight:900;
-
-    color:#d9b36c;
-
-    letter-spacing:2px;
-
+.card-price{
+    color:var(--brown);
+    font-size:14px;
+    font-weight:700;
 }
 
-
-
-nav a{
-
+.card-add{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--black);
     color:white;
-    text-decoration:none;
-
-    margin-right:35px;
-
     transition:.3s;
+}
 
+.card-add:hover{
+    background:var(--gold);
+    color:var(--black);
+    transform:rotate(90deg);
 }
 
 
-nav a:hover{
+/* =========================================================
+   EXPERIENCE
+========================================================= */
 
-    color:#d9b36c;
+.experience{
+    background:var(--cream);
+}
 
+.experience-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
+}
+
+.experience-visual{
+    min-height:620px;
+    background:var(--black);
+    position:relative;
+    overflow:hidden;
+    display:grid;
+    place-items:center;
+}
+
+.experience-visual::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    border:1px solid rgba(198,161,91,.3);
+}
+
+.experience-visual::after{
+    content:"";
+    position:absolute;
+    width:350px;
+    height:350px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(198,161,91,.17),
+        transparent 65%
+    );
+}
+
+.experience-number{
+    position:absolute;
+    top:25px;
+    left:30px;
+    font-family:'Playfair Display',serif;
+    color:rgba(255,255,255,.25);
+    font-size:13px;
+    letter-spacing:4px;
+}
+
+.experience-bottle{
+    transform:scale(1.15);
+    z-index:2;
+}
+
+.experience-copy h2{
+    font-size:55px;
+    font-weight:500;
+    line-height:1.3;
+}
+
+.experience-copy h2 em{
+    font-family:'Playfair Display',serif;
+    color:var(--gold);
+}
+
+.experience-copy>p{
+    margin-top:25px;
+    color:var(--muted);
+    line-height:2.2;
+    font-size:14px;
+}
+
+.feature-list{
+    margin-top:40px;
+    border-top:1px solid var(--line);
+}
+
+.feature{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+}
+
+.feature-number{
+    color:var(--gold);
+    font-family:'Playfair Display',serif;
+}
+
+.feature h4{
+    font-size:14px;
+}
+
+.feature p{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:4px;
 }
 
 
+/* =========================================================
+   STORE
+========================================================= */
 
+.store{
+    background:
+        linear-gradient(
+            120deg,
+            #111 0%,
+            #18130e 100%
+        );
+    color:white;
+    overflow:hidden;
+}
 
+.store-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:100px;
+    align-items:center;
+}
 
-/* HERO */
+.store-copy h2{
+    font-size:clamp(45px,6vw,75px);
+    font-weight:500;
+    line-height:1.2;
+}
 
+.store-copy h2 em{
+    font-family:'Playfair Display',serif;
+    color:var(--gold);
+}
 
-.hero{
+.store-copy p{
+    margin-top:25px;
+    color:#8d8982;
+    line-height:2.2;
+    max-width:600px;
+}
 
+.store-address{
+    margin-top:45px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.12);
+}
 
-height:100vh;
+.store-address small{
+    color:var(--gold);
+    font-size:10px;
+    letter-spacing:2px;
+}
 
-display:flex;
-align-items:center;
+.store-address strong{
+    display:block;
+    margin-top:12px;
+    font-size:20px;
+    font-weight:500;
+}
 
-padding:0 8%;
+.store-map{
+    min-height:450px;
+    border:1px solid rgba(198,161,91,.3);
+    position:relative;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+}
 
-position:relative;
+.map-circle{
+    width:330px;
+    height:330px;
+    border:1px solid rgba(198,161,91,.3);
+    border-radius:50%;
+    position:relative;
+}
 
+.map-circle::before,
+.map-circle::after{
+    content:"";
+    position:absolute;
+    inset:45px;
+    border:1px solid rgba(198,161,91,.18);
+    border-radius:50%;
+}
 
+.map-pin{
+    position:absolute;
+    width:60px;
+    height:60px;
+    background:var(--gold);
+    color:var(--black);
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:3;
+    box-shadow:0 0 0 15px rgba(198,161,91,.08);
+}
+
+.map-text{
+    position:absolute;
+    bottom:35px;
+    right:35px;
+    color:#716b62;
+    font-size:11px;
 }
 
 
+/* =========================================================
+   STATS
+========================================================= */
 
-.hero::before{
+.stats{
+    padding:80px 0;
+    background:var(--cream);
+}
 
-content:"";
+.stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+}
 
-position:absolute;
+.stat{
+    text-align:center;
+    padding:20px;
+    border-left:1px solid var(--line);
+}
 
-width:500px;
-height:500px;
+.stat:last-child{
+    border-left:0;
+}
 
-background:#d9b36c;
+.stat strong{
+    display:block;
+    font-family:'Playfair Display',serif;
+    font-size:50px;
+    font-weight:500;
+    color:var(--black);
+}
 
-filter:blur(180px);
-
-opacity:.25;
-
-right:10%;
-
+.stat span{
+    color:var(--muted);
+    font-size:11px;
 }
 
 
+/* =========================================================
+   CTA
+========================================================= */
 
+.cta{
+    padding:120px 0;
+    background:var(--gold);
+    color:var(--black);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
 
-.hero-text{
+.cta::before{
+    content:"AMIR REZA";
+    position:absolute;
+    white-space:nowrap;
+    font-family:'Playfair Display',serif;
+    font-size:18vw;
+    opacity:.06;
+    top:25%;
+    left:50%;
+    transform:translateX(-50%);
+}
 
-width:50%;
+.cta-content{
+    position:relative;
+    z-index:2;
+}
 
-z-index:2;
+.cta h2{
+    font-size:clamp(45px,6vw,80px);
+    font-weight:500;
+    line-height:1.2;
+}
 
-animation:show 1.5s;
+.cta h2 em{
+    font-family:'Playfair Display',serif;
+}
 
+.cta p{
+    max-width:550px;
+    margin:25px auto;
+    line-height:2;
+    font-size:14px;
+}
+
+.cta .btn{
+    background:var(--black);
+    color:white;
+    margin-top:15px;
 }
 
 
-
-.hero h1{
-
-
-font-size:75px;
-
-line-height:1.2;
-
-font-weight:900;
-
-
-}
-
-
-.hero h1 span{
-
-color:#d9b36c;
-
-}
-
-
-
-.hero p{
-
-margin-top:25px;
-
-font-size:20px;
-
-color:#ddd;
-
-line-height:2;
-
-}
-
-
-
-.btn{
-
-
-display:inline-block;
-
-margin-top:40px;
-
-padding:18px 45px;
-
-border-radius:50px;
-
-background:linear-gradient(45deg,#b88735,#f4dc9b);
-
-color:#111;
-
-font-weight:bold;
-
-text-decoration:none;
-
-transition:.4s;
-
-}
-
-
-.btn:hover{
-
-transform:translateY(-8px);
-
-box-shadow:0 20px 50px #d9b36c55;
-
-}
-
-
-
-
-.hero-img{
-
-width:50%;
-
-display:flex;
-
-justify-content:center;
-
-
-}
-
-
-.hero-img img{
-
-
-width:420px;
-
-filter:
-drop-shadow(0 50px 50px black);
-
-
-animation:float 5s infinite;
-
-
-}
-
-
-
-
-
-@keyframes float{
-
-50%{
-transform:translateY(-25px);
-}
-
-}
-
-
-@keyframes show{
-
-from{
-
-opacity:0;
-transform:translateY(50px);
-
-}
-
-}
-
-
-
-
-
-/* SECTION */
-
-
-section{
-
-padding:100px 8%;
-
-}
-
-
-
-.title{
-
-text-align:center;
-
-font-size:45px;
-
-margin-bottom:60px;
-
-color:#d9b36c;
-
-}
-
-
-
-
-
-/* PRODUCTS */
-
-
-.products{
-
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:30px;
-
-
-}
-
-
-
-.card{
-
-
-background:
-linear-gradient(145deg,#151515,#080808);
-
-border:1px solid #333;
-
-padding:35px;
-
-border-radius:30px;
-
-text-align:center;
-
-transition:.5s;
-
-
-}
-
-
-
-.card:hover{
-
-transform:translateY(-20px);
-
-border-color:#d9b36c;
-
-box-shadow:0 30px 60px #000;
-
-}
-
-
-
-
-.card img{
-
-height:230px;
-
-object-fit:contain;
-
-}
-
-
-
-.card h3{
-
-font-size:25px;
-
-margin:20px 0;
-
-}
-
-
-.price{
-
-color:#d9b36c;
-
-font-size:22px;
-
-}
-
-
-
-
-/* STORY */
-
-
-.story{
-
-
-display:flex;
-
-gap:60px;
-
-align-items:center;
-
-
-}
-
-
-
-.story div{
-
-flex:1;
-
-}
-
-
-.story p{
-
-font-size:20px;
-
-line-height:2.2;
-
-color:#ddd;
-
-}
-
-
-
-
-
-/* LOCATION */
-
-
-.location{
-
-
-background:
-
-linear-gradient(
-135deg,
-#111,
-#19140b
-);
-
-border-radius:40px;
-
-text-align:center;
-
-padding:70px;
-
-
-}
-
-
-.location h2{
-
-font-size:45px;
-
-color:#d9b36c;
-
-}
-
-
-
-.location p{
-
-font-size:22px;
-
-margin-top:25px;
-
-}
-
-
-
-
-
-/* FOOTER */
-
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
+    background:#0c0c0c;
+    color:white;
+    padding:70px 0 30px;
+}
 
-padding:40px;
+.footer-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr .8fr;
+    gap:70px;
+    padding-bottom:60px;
+}
 
-text-align:center;
+.footer-brand h2{
+    font-family:'Playfair Display',serif;
+    font-size:35px;
+    color:var(--gold);
+}
 
-background:#000;
+.footer-brand p{
+    margin-top:18px;
+    color:#777;
+    font-size:12px;
+    line-height:2;
+    max-width:350px;
+}
 
-color:#aaa;
+.footer-col h4{
+    font-size:12px;
+    color:var(--gold);
+    margin-bottom:20px;
+}
+
+.footer-col a{
+    display:block;
+    color:#777;
+    font-size:11px;
+    margin-bottom:12px;
+    transition:.3s;
+}
+
+.footer-col a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.08);
+    display:flex;
+    justify-content:space-between;
+    color:#555;
+    font-size:10px;
+}
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+.mobile-menu{
+    position:fixed;
+    inset:0;
+    background:var(--black);
+    z-index:4500;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transform:translateY(-100%);
+    transition:.6s cubic-bezier(.77,0,.18,1);
+}
+
+.mobile-menu.active{
+    transform:translateY(0);
+}
+
+.mobile-menu nav{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
+}
+
+.mobile-menu a{
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    color:white;
+}
+
+.mobile-menu a:hover{
+    color:var(--gold);
+}
+
+.mobile-close{
+    position:absolute;
+    top:25px;
+    left:25px;
+    width:45px;
+    height:45px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:50%;
+    background:transparent;
+    color:white;
+}
+
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:1100px){
+
+    .hero-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .hero h1{
+        font-size:65px;
+    }
+
+    .notes-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .experience-grid,
+    .store-grid{
+        gap:50px;
+    }
 
 }
 
 
+@media(max-width:850px){
 
+    .header-inner{
+        display:flex;
+        justify-content:space-between;
+    }
 
-/* MOBILE */
+    .nav,
+    .header-actions .header-icon{
+        display:none;
+    }
 
+    .menu-btn{
+        display:grid;
+        place-items:center;
+        width:43px;
+        height:43px;
+        border:1px solid var(--line);
+        border-radius:50%;
+        background:transparent;
+    }
 
-@media(max-width:900px){
+    .hero{
+        padding-top:120px;
+    }
 
+    .hero-grid{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
 
-header{
+    .hero-copy{
+        padding-top:0;
+    }
 
-padding:20px;
+    .hero-mini{
+        margin-bottom:20px;
+    }
+
+    .hero-description{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-meta{
+        justify-content:center;
+    }
+
+    .hero-product{
+        height:480px;
+    }
+
+    .hero-floating-text{
+        display:none;
+    }
+
+    .intro-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .intro-number{
+        font-size:90px;
+    }
+
+    .collection-grid{
+        grid-template-columns:1fr;
+    }
+
+    .experience-grid,
+    .store-grid{
+        grid-template-columns:1fr;
+    }
+
+    .store-map{
+        min-height:350px;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .stat:nth-child(2){
+        border-left:0;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+        gap:40px;
+    }
 
 }
 
 
-nav{
+@media(max-width:600px){
 
-display:none;
+    .section{
+        padding:90px 0;
+    }
+
+    .hero h1{
+        font-size:48px;
+        letter-spacing:-2px;
+    }
+
+    .hero-description{
+        font-size:13px;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+    }
+
+    .hero-product{
+        height:420px;
+    }
+
+    .product-ring,
+    .product-aura{
+        width:330px;
+        height:330px;
+    }
+
+    .notes-head,
+    .collection-head{
+        display:block;
+    }
+
+    .notes-head h2,
+    .collection-head h2{
+        font-size:42px;
+    }
+
+    .notes-head p{
+        margin-top:20px;
+    }
+
+    .notes-grid{
+        grid-template-columns:1fr;
+    }
+
+    .note-card{
+        min-height:230px;
+    }
+
+    .experience-copy h2{
+        font-size:42px;
+    }
+
+    .experience-visual{
+        min-height:480px;
+    }
+
+    .experience-bottle{
+        transform:scale(.85);
+    }
+
+    .store-copy h2{
+        font-size:44px;
+    }
+
+    .stats-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .stat strong{
+        font-size:38px;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:10px;
+    }
 
 }
 
 
-.hero{
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
 
-flex-direction:column;
+@media(prefers-reduced-motion:reduce){
 
-justify-content:center;
-
-text-align:center;
-
-}
-
-
-.hero-text,
-.hero-img{
-
-width:100%;
+    *,
+    *::before,
+    *::after{
+        animation:none !important;
+        transition:none !important;
+        scroll-behavior:auto !important;
+    }
 
 }
-
-
-.hero h1{
-
-font-size:45px;
-
-}
-
-
-.hero-img img{
-
-width:280px;
-
-}
-
-
-.products{
-
-grid-template-columns:1fr;
-
-}
-
-
-
-.story{
-
-flex-direction:column;
-
-}
-
-
-}
-
-
-
 
 </style>
-
 </head>
 
 
 <body>
 
 
+<div class="cursor-glow"></div>
 
-<header>
+
+<!-- ======================================================
+     HEADER
+====================================================== -->
+
+<header class="header">
+
+<div class="header-inner">
 
 
-<div class="logo">
-AMIR REZA
+<a href="#" class="logo">
+
+<div class="logo-mark"></div>
+
+<div class="logo-text">
+
+امیر رضا
+
+<small>PERFUME HOUSE</small>
+
 </div>
 
+</a>
 
-<nav>
 
-<a href="#">خانه</a>
-<a href="#products">عطرها</a>
+<nav class="nav">
+
+<a href="#home">خانه</a>
+<a href="#collection">مجموعه عطرها</a>
+<a href="#notes">نت‌های رایحه</a>
 <a href="#story">درباره ما</a>
-<a href="#contact">تماس</a>
+<a href="#contact">تماس با ما</a>
 
 </nav>
 
+
+<div class="header-actions">
+
+<button class="header-icon" aria-label="جستجو">
+
+⌕
+
+</button>
+
+<button class="header-icon" aria-label="سبد خرید">
+
+۰
+
+</button>
+
+<button class="menu-btn" aria-label="منو">
+
+☰
+
+</button>
+
+</div>
+
+
+</div>
 
 </header>
 
 
 
+<!-- ======================================================
+     MOBILE MENU
+====================================================== -->
+
+<div class="mobile-menu">
+
+<button class="mobile-close">×</button>
+
+<nav>
+
+<a href="#home">خانه</a>
+<a href="#collection">عطرها</a>
+<a href="#notes">رایحه‌ها</a>
+<a href="#story">داستان ما</a>
+<a href="#contact">تماس</a>
+
+</nav>
+
+</div>
+
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<main id="home">
 
 
 <section class="hero">
 
 
-<div class="hero-text">
+<div class="hero-grid">
+
+
+<div class="hero-copy reveal">
+
+
+<div class="hero-mini">
+
+<span></span>
+
+خانه‌ای برای رایحه‌های ماندگار
+
+</div>
 
 
 <h1>
 
-امضای شما
-<br>
+عطر فقط
 
-با یک <span>رایحه خاص</span>
+<strong>
+
+یک رایحه <em>نیست.</em>
+
+</strong>
 
 </h1>
 
 
+<p class="hero-description">
 
-<p>
-
-فروشگاه عطر امیر رضا،
-جایی که هر رایحه داستانی متفاوت برای شما خلق می‌کند.
+بعضی رایحه‌ها فقط خوشبو نیستند؛
+آن‌ها بخشی از شخصیت شما می‌شوند.
+در «امیر رضا» مجموعه‌ای از رایحه‌های خاص را
+برای آدم‌هایی انتخاب کرده‌ایم که دوست دارند متفاوت به یاد بمانند.
 
 </p>
 
 
+<div class="hero-buttons">
 
-<a class="btn" href="#products">
+<a href="#collection" class="btn btn-dark">
 
-مشاهده عطرهای ویژه
+کشف مجموعه عطرها
+
+<span>←</span>
 
 </a>
 
 
+<a href="#contact" class="btn btn-outline">
+
+بازدید از فروشگاه
+
+</a>
+
+</div>
+
+
+<div class="hero-meta">
+
+<div class="hero-meta-item">
+
+<strong>۰۱</strong>
+
+<span>انتخاب رایحه</span>
+
+</div>
+
+
+<div class="hero-meta-item">
+
+<strong>۰۲</strong>
+
+<span>تجربه عطر</span>
+
+</div>
+
+
+<div class="hero-meta-item">
+
+<strong>۰۳</strong>
+
+<span>امضای شخصی شما</span>
+
+</div>
+
+</div>
+
 
 </div>
 
 
 
+<div class="hero-product reveal">
 
-<div class="hero-img">
+
+<div class="product-aura"></div>
+
+<div class="product-ring"></div>
 
 
-<img src="https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=700">
+<div class="bottle">
+
+
+<div class="bottle-cap"></div>
+
+<div class="bottle-neck"></div>
+
+
+<div class="bottle-body">
+
+<div class="bottle-label">
+
+<small>AMIR REZA</small>
+
+<strong>NO.01</strong>
+
+<span>EAU DE PARFUM</span>
+
+</div>
+
+</div>
 
 
 </div>
 
+
+<div class="hero-floating-text">
+
+THE ART OF SCENT
+
+</div>
+
+
+</div>
+
+
+</div>
 
 
 </section>
 
 
 
+<!-- ======================================================
+     MARQUEE
+====================================================== -->
+
+<div class="marquee">
+
+<div class="marquee-track">
+
+
+<div class="marquee-item">امضای شما با یک رایحه</div>
+
+<div class="marquee-item">The Art Of Scent</div>
+
+<div class="marquee-item">Luxury Perfume House</div>
+
+<div class="marquee-item">AMIR REZA</div>
+
+<div class="marquee-item">امضای شما با یک رایحه</div>
+
+<div class="marquee-item">The Art Of Scent</div>
+
+<div class="marquee-item">Luxury Perfume House</div>
+
+<div class="marquee-item">AMIR REZA</div>
+
+
+</div>
+
+</div>
 
 
 
-<section id="products">
+<!-- ======================================================
+     INTRO
+====================================================== -->
+
+<section class="intro section" id="story">
 
 
-<h2 class="title">
+<div class="container">
 
-محبوب‌ترین رایحه‌ها
+
+<div class="intro-grid">
+
+
+<div class="intro-number reveal">
+
+01
+
+</div>
+
+
+<div class="intro-content reveal">
+
+
+<div class="eyebrow">
+
+PHILOSOPHY
+
+</div>
+
+
+<h2>
+
+رایحه‌ای که
+
+<span>شما را تعریف می‌کند.</span>
 
 </h2>
 
 
-
-<div class="products">
-
-
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=400">
-
-<h3>
-Royal Night
-</h3>
-
 <p>
-رایحه‌ای عمیق و ماندگار برای شب‌های خاص
+
+انتخاب عطر، انتخاب یک بو نیست.
+انتخاب حسی است که می‌خواهید از خودتان در ذهن دیگران باقی بگذارید.
+امیر رضا با نگاه متفاوت به دنیای عطر،
+تلاش می‌کند تجربه‌ای فراتر از خرید یک شیشه عطر برای شما بسازد؛
+تجربه‌ای که از اولین انتخاب تا آخرین نت رایحه ادامه دارد.
+
 </p>
 
-<div class="price">
-۲,۸۵۰,۰۰۰ تومان
-</div>
-
 
 </div>
 
 
-
-
-
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1595425970377-c9703cf6c34a?q=80&w=400">
-
-<h3>
-Golden Touch
-</h3>
-
-<p>
-ترکیبی از ظرافت و جذابیت
-</p>
-
-<div class="price">
-۳,۲۰۰,۰۰۰ تومان
 </div>
-
-
-</div>
-
-
-
-
-
-
-<div class="card">
-
-<img src="https://images.unsplash.com/photo-1619994403073-2cec844b8e63?q=80&w=400">
-
-<h3>
-Luxury Man
-</h3>
-
-<p>
-برای کسانی که متفاوت فکر می‌کنند
-</p>
-
-<div class="price">
-۲,۶۰۰,۰۰۰ تومان
-</div>
-
-
-</div>
-
 
 
 </div>
@@ -737,38 +2067,117 @@ Luxury Man
 
 
 
+<!-- ======================================================
+     NOTES
+====================================================== -->
+
+<section class="notes-section section" id="notes">
 
 
+<div class="container">
 
 
-<section id="story">
-
-
-<div class="story">
+<div class="notes-head reveal">
 
 
 <div>
 
+<div class="eyebrow">
 
-<h2 class="title">
+THE NOTES
 
-داستان امیر رضا
+</div>
+
+<h2>
+
+دنیای <em>رایحه‌ها</em>
 
 </h2>
+
+</div>
 
 
 <p>
 
-
-ما باور داریم عطر فقط یک محصول نیست؛
-
-بلکه بخشی از شخصیت و خاطره هر انسان است.
-
-در فروشگاه امیر رضا تلاش می‌کنیم بهترین رایحه‌ها را با تجربه‌ای متفاوت ارائه کنیم.
-
-
+هر رایحه شخصیت خودش را دارد.
+تلخ، شیرین، گرم یا خنک؛
+شما کدام داستان را انتخاب می‌کنید؟
 
 </p>
+
+
+</div>
+
+
+
+<div class="notes-grid">
+
+
+<div class="note-card reveal">
+
+<div class="note-icon">✦</div>
+
+<h3>چوبی</h3>
+
+<p>
+
+عمیق، قدرتمند و گرم.
+برای کسانی که حضورشان قبل از حرف زدن احساس می‌شود.
+
+</p>
+
+</div>
+
+
+
+<div class="note-card reveal">
+
+<div class="note-icon">◇</div>
+
+<h3>شرقی</h3>
+
+<p>
+
+غنی، مرموز و ماندگار.
+ترکیبی از ادویه‌ها و نت‌های گرم برای لحظات خاص.
+
+</p>
+
+</div>
+
+
+
+<div class="note-card reveal">
+
+<div class="note-icon">○</div>
+
+<h3>مرکباتی</h3>
+
+<p>
+
+تازه، پرانرژی و روشن.
+انتخابی مناسب برای شروع یک روز متفاوت.
+
+</p>
+
+</div>
+
+
+
+<div class="note-card reveal">
+
+<div class="note-icon">✧</div>
+
+<h3>گل‌دار</h3>
+
+<p>
+
+ظریف، لطیف و جذاب.
+رایحه‌ای که آرام وارد می‌شود اما فراموش نمی‌شود.
+
+</p>
+
+</div>
 
 
 </div>
@@ -781,34 +2190,607 @@ Luxury Man
 
 
 
+<!-- ======================================================
+     COLLECTION
+====================================================== -->
+
+<section class="collection section" id="collection">
+
+
+<div class="container">
+
+
+<div class="collection-head reveal">
+
+
+<div>
+
+<div class="eyebrow">
+
+SIGNATURE COLLECTION
+
+</div>
+
+<h2>
+
+انتخاب‌های <em>خاص</em>
+
+</h2>
+
+</div>
+
+
+<a href="#contact">
+
+مشاهده تمام مجموعه ←
+
+</a>
+
+
+</div>
 
 
 
-<section id="contact">
+<div class="collection-grid">
 
 
-<div class="location">
+<!-- CARD 1 -->
+
+<article class="perfume-card reveal">
+
+
+<div class="perfume-top">
+
+
+<div class="small-bottle">
+
+<div class="sb-cap"></div>
+
+<div class="sb-neck"></div>
+
+<div class="sb-body">
+
+<div class="sb-label">
+
+<div>
+
+<strong>NOIR</strong>
+
+<small>AMIR REZA</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="card-content">
+
+<div class="card-topline">
+
+<span>EAU DE PARFUM</span>
+
+<span>01</span>
+
+</div>
+
+<h3>Black Signature</h3>
+
+<p>چوبی • شرقی • گرم</p>
+
+
+<div class="card-bottom">
+
+<span class="card-price">۳,۸۵۰,۰۰۰ تومان</span>
+
+<button class="card-add">+</button>
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- CARD 2 -->
+
+<article class="perfume-card reveal">
+
+
+<div class="perfume-top">
+
+
+<div class="small-bottle" style="transform:scale(.9);">
+
+<div class="sb-cap" style="background:linear-gradient(90deg,#d2b878,#fff0b0,#9e793c);"></div>
+
+<div class="sb-neck"></div>
+
+<div class="sb-body" style="background:linear-gradient(135deg,#806333,#e3c36d,#705229);">
+
+<div class="sb-label">
+
+<div>
+
+<strong>GOLD</strong>
+
+<small>AMIR REZA</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="card-content">
+
+<div class="card-topline">
+
+<span>EAU DE PARFUM</span>
+
+<span>02</span>
+
+</div>
+
+<h3>Golden Desire</h3>
+
+<p>شرقی • وانیلی • شیرین</p>
+
+
+<div class="card-bottom">
+
+<span class="card-price">۴,۲۵۰,۰۰۰ تومان</span>
+
+<button class="card-add">+</button>
+
+</div>
+
+</div>
+
+
+</article>
+
+
+
+<!-- CARD 3 -->
+
+<article class="perfume-card reveal">
+
+
+<div class="perfume-top">
+
+
+<div class="small-bottle" style="transform:scale(.82);">
+
+<div class="sb-cap"></div>
+
+<div class="sb-neck"></div>
+
+<div class="sb-body" style="background:linear-gradient(135deg,#20282b,#607b7d,#162022);">
+
+<div class="sb-label">
+
+<div>
+
+<strong>PURE</strong>
+
+<small>AMIR REZA</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="card-content">
+
+<div class="card-topline">
+
+<span>EAU DE PARFUM</span>
+
+<span>03</span>
+
+</div>
+
+<h3>Pure Azure</h3>
+
+<p>مرکباتی • دریایی • خنک</p>
+
+
+<div class="card-bottom">
+
+<span class="card-price">۳,۱۵۰,۰۰۰ تومان</span>
+
+<button class="card-add">+</button>
+
+</div>
+
+</div>
+
+
+</article>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     EXPERIENCE
+====================================================== -->
+
+<section class="experience section">
+
+
+<div class="container">
+
+
+<div class="experience-grid">
+
+
+<div class="experience-visual reveal">
+
+
+<span class="experience-number">
+
+AMIR REZA / 02
+
+</span>
+
+
+<div class="experience-bottle">
+
+
+<div class="bottle">
+
+
+<div class="bottle-cap"></div>
+
+<div class="bottle-neck"></div>
+
+<div class="bottle-body">
+
+<div class="bottle-label">
+
+<small>AMIR REZA</small>
+
+<strong>ÉLITE</strong>
+
+<span>EAU DE PARFUM</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+<div class="experience-copy reveal">
+
+
+<div class="eyebrow">
+
+THE EXPERIENCE
+
+</div>
 
 
 <h2>
-آدرس فروشگاه
+
+اول انتخاب کن،
+<br>
+
+بعد <em>امضای خودت</em> را پیدا کن.
+
 </h2>
 
 
 <p>
 
-مشهد - چهار راه مخابرات
-
-<br>
-
-پاساژ اکسیر - طبقه دوم
+گاهی بهترین عطر همان عطری نیست که اول به چشم شما می‌آید.
+ما در امیر رضا کمک می‌کنیم رایحه‌ای را پیدا کنید که با شخصیت،
+استایل و حال‌وهوای شما هماهنگ باشد.
 
 </p>
 
 
-<a class="btn">
+<div class="feature-list">
 
-تماس و سفارش
+
+<div class="feature">
+
+<span class="feature-number">01</span>
+
+<div>
+
+<h4>شناخت سلیقه شما</h4>
+
+<p>تلخ، شیرین، گرم، خنک یا ترکیبی خاص</p>
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<span class="feature-number">02</span>
+
+<div>
+
+<h4>تجربه و تست رایحه</h4>
+
+<p>قبل از انتخاب، رایحه را تجربه کنید</p>
+
+</div>
+
+</div>
+
+
+<div class="feature">
+
+<span class="feature-number">03</span>
+
+<div>
+
+<h4>انتخاب نهایی</h4>
+
+<p>رایحه‌ای که قرار است امضای شما باشد</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     STORE
+====================================================== -->
+
+<section class="store section" id="contact">
+
+
+<div class="container">
+
+
+<div class="store-grid">
+
+
+<div class="store-copy reveal">
+
+
+<div class="eyebrow">
+
+VISIT OUR STORE
+
+</div>
+
+
+<h2>
+
+رایحه را
+<br>
+
+از نزدیک <em>تجربه کن.</em>
+
+</h2>
+
+
+<p>
+
+اگر در مشهد هستید، منتظر شما هستیم.
+در فروشگاه امیر رضا می‌توانید رایحه‌ها را از نزدیک تجربه کنید،
+با خیال راحت انتخاب کنید و عطری پیدا کنید که واقعاً برای شما ساخته شده است.
+
+</p>
+
+
+<div class="store-address">
+
+<small>OUR ADDRESS</small>
+
+<strong>
+
+مشهد، چهارراه مخابرات، پاساژ اکسیر، طبقه دوم
+
+</strong>
+
+</div>
+
+
+<a href="tel:+989000000000" class="btn btn-dark" style="margin-top:30px;">
+
+تماس با فروشگاه
+
+<span>←</span>
+
+</a>
+
+
+</div>
+
+
+
+<div class="store-map reveal">
+
+
+<div class="map-circle">
+
+<div class="map-pin">
+
+✦
+
+</div>
+
+</div>
+
+
+<div class="map-text">
+
+MASHHAD / EXIR PASSAGE / FLOOR 02
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     STATS
+====================================================== -->
+
+<section class="stats">
+
+
+<div class="container">
+
+
+<div class="stats-grid">
+
+
+<div class="stat reveal">
+
+<strong data-count="100">۰</strong>
+
+<span>رایحه برای انتخاب</span>
+
+</div>
+
+
+<div class="stat reveal">
+
+<strong data-count="15">۰</strong>
+
+<span>سال تجربه</span>
+
+</div>
+
+
+<div class="stat reveal">
+
+<strong data-count="5000">۰</strong>
+
+<span>مشتری خوش‌سلیقه</span>
+
+</div>
+
+
+<div class="stat reveal">
+
+<strong data-count="100">۰</strong>
+
+<span>درصد انتخاب خاص</span>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- ======================================================
+     CTA
+====================================================== -->
+
+<section class="cta">
+
+
+<div class="cta-content container reveal">
+
+
+<div class="eyebrow" style="justify-content:center;color:#111;">
+
+YOUR SIGNATURE SCENT
+
+</div>
+
+
+<h2>
+
+رایحه‌ای انتخاب کن
+<br>
+
+که <em>فراموش نشوی.</em>
+
+</h2>
+
+
+<p>
+
+امیر رضا؛ انتخابی برای کسانی که معمولی بودن را انتخاب نمی‌کنند.
+
+</p>
+
+
+<a href="#contact" class="btn">
+
+ورود به دنیای امیر رضا
+
+<span>←</span>
 
 </a>
 
@@ -820,69 +2802,356 @@ Luxury Man
 
 
 
+</main>
 
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
 
 <footer>
 
 
-© 2026 Amir Reza Perfume
+<div class="container">
 
-<br>
 
-تجربه‌ای فراتر از یک رایحه
+<div class="footer-grid">
+
+
+<div class="footer-brand">
+
+<h2>AMIR REZA</h2>
+
+<p>
+
+خانه عطر امیر رضا؛
+جایی برای کشف رایحه‌هایی که قرار است
+بخشی از شخصیت شما شوند.
+
+</p>
+
+</div>
+
+
+<div class="footer-col">
+
+<h4>دسترسی سریع</h4>
+
+<a href="#home">خانه</a>
+<a href="#collection">مجموعه عطرها</a>
+<a href="#notes">نت‌های رایحه</a>
+<a href="#story">داستان ما</a>
+
+</div>
+
+
+<div class="footer-col">
+
+<h4>فروشگاه</h4>
+
+<a href="#contact">آدرس فروشگاه</a>
+<a href="tel:+989000000000">تماس با ما</a>
+<a href="#">اینستاگرام</a>
+<a href="#">سفارش و مشاوره</a>
+
+</div>
+
+
+</div>
+
+
+<div class="footer-bottom">
+
+<span>
+© 2026 AMIR REZA PERFUME HOUSE
+</span>
+
+<span>
+مشهد • پاساژ اکسیر • طبقه دوم
+</span>
+
+</div>
+
+
+</div>
 
 
 </footer>
 
 
 
-
-
 <script>
 
+/* =========================================================
+   HEADER SCROLL
+========================================================= */
 
-// smooth entrance animation
-
-const cards=document.querySelectorAll('.card');
-
+const header = document.querySelector('.header');
 
 window.addEventListener('scroll',()=>{
 
+    if(window.scrollY > 50){
 
-cards.forEach(card=>{
+        header.classList.add('scrolled');
+
+    }else{
+
+        header.classList.remove('scrolled');
+
+    }
+
+});
 
 
-let top=card.getBoundingClientRect().top;
+
+/* =========================================================
+   CURSOR GLOW
+========================================================= */
+
+const glow = document.querySelector('.cursor-glow');
+
+document.addEventListener('mousemove',(e)=>{
+
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+
+});
 
 
-if(top < window.innerHeight-100){
 
-card.style.opacity="1";
+/* =========================================================
+   MOBILE MENU
+========================================================= */
 
-card.style.transform="translateY(0)";
+const menuBtn = document.querySelector('.menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileClose = document.querySelector('.mobile-close');
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
 
+menuBtn.addEventListener('click',()=>{
+
+    mobileMenu.classList.add('active');
+    document.body.classList.add('menu-open');
+
+});
+
+mobileClose.addEventListener('click',()=>{
+
+    mobileMenu.classList.remove('active');
+    document.body.classList.remove('menu-open');
+
+});
+
+mobileLinks.forEach(link=>{
+
+    link.addEventListener('click',()=>{
+
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+
+    });
+
+});
+
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const reveals = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(
+
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add('visible');
+
+        }
+
+    });
+
+},
+
+{
+    threshold:.12
 }
 
+);
+
+
+reveals.forEach(el=>observer.observe(el));
+
+
+
+/* =========================================================
+   COUNTERS
+========================================================= */
+
+const counters = document.querySelectorAll('[data-count]');
+
+const counterObserver = new IntersectionObserver(
+
+(entries,observer)=>{
+
+    entries.forEach(entry=>{
+
+        if(!entry.isIntersecting) return;
+
+        const element = entry.target;
+        const target = Number(element.dataset.count);
+
+        let current = 0;
+
+        const duration = 1500;
+        const start = performance.now();
+
+        function update(now){
+
+            const progress = Math.min(
+                (now-start)/duration,
+                1
+            );
+
+            const ease =
+                1-Math.pow(1-progress,3);
+
+            current =
+                Math.floor(target*ease);
+
+            element.textContent =
+                current.toLocaleString('fa-IR');
+
+            if(progress<1){
+
+                requestAnimationFrame(update);
+
+            }else{
+
+                element.textContent =
+                    target.toLocaleString('fa-IR') +
+                    (target===100 ? '٪' : '+');
+
+            }
+
+        }
+
+        requestAnimationFrame(update);
+
+        observer.unobserve(element);
+
+    });
+
+},
+
+{
+    threshold:.7
+}
+
+);
+
+
+counters.forEach(counter=>{
+
+    counterObserver.observe(counter);
 
 });
 
 
+
+/* =========================================================
+   PRODUCT INTERACTION
+========================================================= */
+
+const addButtons =
+document.querySelectorAll('.card-add');
+
+addButtons.forEach(button=>{
+
+    button.addEventListener('click',()=>{
+
+        button.innerHTML='✓';
+
+        button.style.background='var(--gold)';
+        button.style.color='#111';
+
+        setTimeout(()=>{
+
+            button.innerHTML='+';
+
+            button.style.background='';
+            button.style.color='';
+
+        },1400);
+
+    });
+
 });
 
 
 
-cards.forEach(card=>{
+/* =========================================================
+   PARALLAX HERO
+========================================================= */
 
-card.style.opacity="0";
+const heroProduct =
+document.querySelector('.hero-product');
 
-card.style.transform="translateY(60px)";
+window.addEventListener('scroll',()=>{
 
-card.style.transition="1s";
+    if(window.innerWidth > 850){
 
+        const y = window.scrollY;
+
+        heroProduct.style.transform =
+            `translateY(${y * .08}px)`;
+
+    }
 
 });
 
 
+/* =========================================================
+   MAGNETIC BUTTON EFFECT
+========================================================= */
+
+const magneticButtons =
+document.querySelectorAll('.btn');
+
+magneticButtons.forEach(button=>{
+
+    button.addEventListener('mousemove',(e)=>{
+
+        const rect =
+            button.getBoundingClientRect();
+
+        const x =
+            e.clientX -
+            rect.left -
+            rect.width/2;
+
+        const y =
+            e.clientY -
+            rect.top -
+            rect.height/2;
+
+        button.style.transform =
+            `translate(${x*.08}px,${y*.08}px)`;
+
+    });
+
+    button.addEventListener('mouseleave',()=>{
+
+        button.style.transform='';
+
+    });
+
+});
 
 
 </script>
